@@ -1,0 +1,15 @@
+Nome: Clair 
+E-mail:: clairbaierle2345@gmail.com 
+Telefone: 16316535
+RG: 3123412 
+--- 
+Nome: edson 
+E-mail:: edsonbaierle432@gmail.com 
+Telefone: 4654645 
+RG: 4235 
+---
+Nome: Jose 
+E-mail:: JoseBaierle@gmail.com 
+Telefone: 654351351 
+RG: 554652.65 
+--- 
