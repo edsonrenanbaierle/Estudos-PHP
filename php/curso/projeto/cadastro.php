@@ -1,5 +1,42 @@
 <?php
+  require_once("./Controller/UsuarioController.php");
+  require_once("./Model/Usuario.php");
 
+  var_dump($usuarioController->retornarUsuario("edsonbaierle@gmail.com.txt")); 
+  $msg = "";
+
+  //txtNomeRegistro txtEmailRegistro txtPasswordLogin
+  if(filter_input(INPUT_POST, "txtEmailRegistro")){
+
+
+    $usuario = new Usuario(); //instacia de usuario
+    $usuarioController = new UsuarioController; //cotroller de usuario
+
+    $usuario->setNome(filter_input(INPUT_POST, "txtNomeRegistro"));
+    $usuario->setEmail(filter_input(INPUT_POST, "txtEmailRegistro"));
+    $usuario->setSenha(filter_input(INPUT_POST, "txtPasswordLogin"));
+    $usuario->setData(date('Y-m-d H:i:s'));
+
+    $result = $usuarioController->cadastrar($usuario);
+
+    switch ($result) {
+      case 1:
+        $msg = "<div class='alert alert-sucess'>Usuário Cadastrado com sucesso!</div>";
+        break;
+      case -1:
+        $msg = "<div class='alert alert-warning'>Usuário cadastrado!</div>";
+        break;
+      case -2:
+        $msg = "<div class='alert alert-warning'>Dados Invalidos!</div>";
+        break;
+      case -10:
+        $msg = "<div class='alert alert-warning'>Erro ao tentar cadastrar, tente mais tarde!</div>";
+        break;
+      default:
+        # code...
+        break;
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +66,15 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="txtNomeRegistro" placeholder="nome">
-      <input type="text" id="login" class="fadeIn second" name="txtEmailRegistro" placeholder="email">
+    <form method="post">
+      <input type="text" id="loginNome" class="fadeIn second" name="txtNomeRegistro" placeholder="nome">
+      <input type="text" id="loginEmail" class="fadeIn second" name="txtEmailRegistro" placeholder="email">
       <input type="password" id="password" class="fadeIn third" name="txtPasswordLogin" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Cadastro">
+      <br>
+      <div>
+          <?php echo $msg ?>
+      </div>
     </form>
 
     <!-- Remind Passowrd -->
