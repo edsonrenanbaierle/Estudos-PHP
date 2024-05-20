@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /c/Users/User/Desktop/projeto/php:/var/www/html
+      - /home/imply/repositorios/docker/php:/var/www/html
     links:
       - db
 
