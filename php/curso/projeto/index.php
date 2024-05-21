@@ -1,5 +1,23 @@
 <?php
+  session_start();
 
+  $msg = "";
+  require_once("./Controller/UsuarioController.php");
+  require_once("./Model/Usuario.php");
+
+  $usuario = new Usuario(); //instacia de usuario
+  $usuarioController = new UsuarioController; //cotroller de usuario
+  if(filter_input(INPUT_POST, "txtEmailLogin")){
+    $usuarioObj = $usuarioController->autenticar(filter_input(INPUT_POST, "txtEmailLogin"), filter_input(INPUT_POST, "txtPasswordLogin"));
+    if($usuarioObj != null){
+      $_SESSION["nomeusuario"] = $usuarioObj->getNome();
+      $_SESSION["emailusuario"] = $usuarioObj->getEmail();
+      $_SESSION["datausuario"] = $usuarioObj->getData();
+      header("Location: painel.php");
+    }else{
+      $msg = "<div class='alert alert-warning'>Usuario ou senha invalido!</div>";
+    }
+  }
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +47,12 @@
     </div>
 
     <!-- Login Form -->
-    <form>
+    <form method="post">
       <input type="text" id="login" class="fadeIn second" name="txtEmailLogin" placeholder="email">
       <input type="password" id="password" class="fadeIn third" name="txtPasswordLogin" placeholder="password">
       <input type="submit" class="fadeIn fourth" value="Log In">
+      <br>
+      <?php $msg ?>
     </form>
 
     <!-- Remind Passowrd -->

@@ -1,4 +1,6 @@
 <?php
-    //sessao
-    header("Location: index.php")
+    session_start();
+    session_destroy();
+    
+    header("Location: index.php?msg=2");
 ?>

@@ -2,7 +2,6 @@
   require_once("./Controller/UsuarioController.php");
   require_once("./Model/Usuario.php");
 
-  var_dump($usuarioController->retornarUsuario("edsonbaierle@gmail.com.txt")); 
   $msg = "";
 
   //txtNomeRegistro txtEmailRegistro txtPasswordLogin
@@ -14,7 +13,7 @@
 
     $usuario->setNome(filter_input(INPUT_POST, "txtNomeRegistro"));
     $usuario->setEmail(filter_input(INPUT_POST, "txtEmailRegistro"));
-    $usuario->setSenha(filter_input(INPUT_POST, "txtPasswordLogin"));
+    $usuario->setSenha(md5(filter_input(INPUT_POST, "txtPasswordLogin")));
     $usuario->setData(date('Y-m-d H:i:s'));
 
     $result = $usuarioController->cadastrar($usuario);

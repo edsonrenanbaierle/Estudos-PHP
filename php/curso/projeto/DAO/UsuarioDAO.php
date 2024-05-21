@@ -66,8 +66,8 @@
                 $usuario = new Usuario();
                 $usuario->setNome($arr[0]);
                 $usuario->setEmail($arr[1]);
-                $usuario->setSenha($arr[3]);
-                $usuario->setData($arr[4]);
+                $usuario->setSenha($arr[2]);
+                $usuario->setData($arr[3]);
                 fclose($fopen);
 
                 return $usuario;
