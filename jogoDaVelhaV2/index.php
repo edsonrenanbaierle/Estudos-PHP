@@ -46,7 +46,7 @@
 
 
             //verrifica se o array ainda tem uma posição livre
-            if(isBoardFull($board)){
+            if(!isBoardFull($board)){
                 break;
             }
 
