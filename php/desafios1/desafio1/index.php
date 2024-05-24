@@ -19,8 +19,8 @@
         $fileConteudoDescriptografado = base64_decode($arrayFileConteudo[1]); //retorna o conteudo do arquivo descriptografado
 
         //salvar dados na image
-        $nomeArquivo = date('d.m.Y');
-        salvarDados($nomeArquivo, $extensao, $fileConteudoDescriptografado);
+        $nomeArquivo = explode(".", $nomeArq); //explode para pegar o arquivo sem o nome do arquivo sem o .txt
+        salvarDados($nomeArquivo[0], $extensao, $fileConteudoDescriptografado);
 
         //fechamento dos arquivos
         fclose($fopen);
