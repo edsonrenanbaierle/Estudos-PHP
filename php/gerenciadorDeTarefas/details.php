@@ -1,6 +1,9 @@
 <?php
     session_start();
+
     $data = $_SESSION['tasks'][$_GET['key']];
+
+
 ?>
 
 <!DOCTYPE html>

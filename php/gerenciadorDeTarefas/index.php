@@ -2,11 +2,15 @@
 
     session_start();
 
+    require_once __DIR__ . "/connect.php";
+
     if(!isset($_SESSION['tasks'])){
         $_SESSION['tasks'] = array();
     }
 
-
+    $stmt = $conn->prepare("SELECT * FROM tasks");
+    $stmt->execute();
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -56,14 +60,14 @@
         <div class="list-tasks">
             <?php if(isset($_SESSION['tasks'])): ?>
             <ul>
-                <?php foreach ($_SESSION['tasks'] as $key => $task): ?>
+                <?php foreach ($stmt->fetchAll() as $key => $task): ?>
                     <li>
-                        <a href="details.php?key=<?php echo $key ?>"><?php echo $task['task_name'] ?></a>
-                        <button class="btn-clear" type="button" onclick="deletar<?php echo $key ?>()">Remover</button>
+                        <a href="details.php?key=<?php echo $task['id'] ?>"><?php echo $task['task_name'] ?></a>
+                        <button class="btn-clear" type="button" onclick="deletar<?php echo $task['id'] ?>()">Remover</button>
                         <script>
-                            function deletar<?php echo $key ?>(){
+                            function deletar<?php echo $task['id'] ?>(){
                                 if(confirm('Confirmar remoção?')){
-                                    window.location = 'http://localhost:8080/gerenciadorDeTarefas/task.php?key=<?php echo $key ?>';
+                                    window.location = 'http://localhost:8080/gerenciadorDeTarefas/task.php?key=<?php echo $task['id'] ?>';
                                 }
                                 return false;
                             }

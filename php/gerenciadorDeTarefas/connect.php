@@ -1,10 +1,9 @@
 <?php
 
     try {
-        $conn = new PDO('mysqli:host=localhost;dbname=sys', 'root','root');
-        echo "conectado";
+        $conn = new PDO('mysql:host=meu-mysql-php;dbname=task', 'root','root');
     } catch (PDOException $e) {
-        echo "Erro ao se conectar" . $e->getMessage();
+        throw $e;
     }
 
 ?>

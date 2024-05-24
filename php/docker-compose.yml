@@ -5,9 +5,10 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /home/imply/repositorios/docker/php:/var/www/html
+      - C:\Users\User\Desktop\projeto\php:/var/www/html
     links:
       - db
+    command: bash -c "docker-php-ext-install mysqli && apache2-foreground"
 
   db:
     image: mysql:latest
