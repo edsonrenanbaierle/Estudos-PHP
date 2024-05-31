@@ -1,5 +1,5 @@
 <?php
-    namespace Baierle\Teste\Model; 
+    namespace Baierle\Teste\Dominio\Model;  
 
     class Endereco{
         private string $cidade;

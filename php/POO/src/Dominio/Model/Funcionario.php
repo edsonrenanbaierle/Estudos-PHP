@@ -1,15 +1,18 @@
 <?php
-    namespace Baierle\Teste\Model; 
-    require_once __DIR__ . "/Autenticar.php";
+    namespace Baierle\Teste\Dominio\Model;
+
+use DateTimeInterface;
+
+    require_once __DIR__ . "/../../autoload.php";
 
 
     class Funcionario extends Pessoa implements Autenticar{
         private float $salario;
         private string $senha;
 
-        public function __construct(string $nome, int $idade, Endereco $endereco, float $salario)
+        public function __construct(?int $id, string $nome, DateTimeInterface $dataDeNascimento, Endereco $endereco, float $salario)
         {
-            parent::__construct($nome, $idade, $endereco);
+            parent::__construct($id, $nome, $dataDeNascimento, $endereco);
             $this->salario = $salario;
         }
 

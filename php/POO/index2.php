@@ -1,7 +1,9 @@
 <?php
-    require_once "./src/Pessoa.php";
-    require_once "./src/Endereco.php";
-    require_once "./src/Funcionario.php";
+    require_once "autoload.php";
+
+    use Baierle\Teste\Model\Endereco;
+    use Baierle\Teste\Model\Pessoa;
+    use Baierle\Teste\Model\Funcionario;
 
     $endereco = new Endereco("Santa Cruz do Sul", "Rs", "Rua Doutor Pedro Eggler");
 
