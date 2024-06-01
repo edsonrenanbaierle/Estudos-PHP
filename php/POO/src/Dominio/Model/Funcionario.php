@@ -1,19 +1,22 @@
 <?php
     namespace Baierle\Teste\Dominio\Model;
 
-use DateTimeInterface;
+    use DateTimeInterface;
 
-    require_once __DIR__ . "/../../autoload.php";
+    
+    require_once __DIR__ . "/../../../autoload.php";
 
 
     class Funcionario extends Pessoa implements Autenticar{
         private float $salario;
         private string $senha;
+        private string $cargo;
 
-        public function __construct(?int $id, string $nome, DateTimeInterface $dataDeNascimento, Endereco $endereco, float $salario)
+        public function __construct(?int $id, string $nome, DateTimeInterface $dataDeNascimento, Endereco $endereco, float $salario, $cargo)
         {
             parent::__construct($id, $nome, $dataDeNascimento, $endereco);
             $this->salario = $salario;
+            $this->cargo = $cargo;
         }
 
         public function printValorDeDEsconto(){
@@ -30,6 +33,14 @@ use DateTimeInterface;
 
         public function setSenha($senha){
             $this->senha = $senha;
+        }
+
+        public function getSalario() : float{
+            return $this->salario;
+        }
+
+        public function getCargo() : string{
+            return $this->cargo;
         }
     }
 

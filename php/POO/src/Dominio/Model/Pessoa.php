@@ -34,7 +34,7 @@ abstract class Pessoa{
         $this->dataDeNascimento = $dataDeNascimento;
     }
 
-    public function getNome(){
+    public function getNome() : string{
         return $this->nome;
     }
 
@@ -45,6 +45,24 @@ abstract class Pessoa{
     public function getEndereco() : Endereco {
         return $this->endereco;
     }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function getEnderec() : Endereco{
+        return $this->endereco;
+    }
+
+    public function setEndereco(Endereco $endereco){
+        $this->endereco = $endereco;
+    }
+
+
 
     // private function avaliaIdade($idade){
     //     if($idade > 0 && $idade < 120){

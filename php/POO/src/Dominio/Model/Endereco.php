@@ -2,15 +2,19 @@
     namespace Baierle\Teste\Dominio\Model;  
 
     class Endereco{
+        private ?int $idEndereco;
         private string $cidade;
         private string $uf;
         private string $rua;
+        private ?int $idFuncionario;
 
-        public function __construct($cidade, $uf, $rua)
-        {
+        public function __construct(?int $idEndereco, $cidade, $uf, $rua, ?int $idFuncionario)
+        {   
+            $this->idEndereco = $idEndereco;
             $this->cidade = $cidade;
             $this->uf = $uf;
             $this->rua = $rua;
+            $this->idFuncionario = $idFuncionario;
         }
 
         public function getCidade() : string{
