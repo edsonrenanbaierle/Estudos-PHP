@@ -25,6 +25,7 @@ use Baierle\Teste\Infraestrutura\Repository\PdoRepositoryFuncionario;
     // $repository->salvar($produto3);
     //$repository->updateProduto($produto1);
     //$repository->deleteProduto($produto1);
+    //teste de murge
     // $repository->readProduto($produto2);
     //$repository->todosOsProdutos($produto2);
 

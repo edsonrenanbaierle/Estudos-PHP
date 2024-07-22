@@ -1,3 +1,6 @@
-<?php 
+<?php
+
+
+ echo("hello world");
  phpinfo();
 ?>
